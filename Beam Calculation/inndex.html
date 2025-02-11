@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beam Cost Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <h2>Beam Cost Calculator</h2>
+
+    <form id="beamForm">
+        <label for="beamType">Select Beam Type:</label>
+        <select id="beamType" name="beamType" onchange="beamCalculator.showInputs()">
+            <option value="">-- Select --</option>
+            <option value="i">I-Beam</option>
+            <option value="t">T-Beam</option>
+            <option value="circle">Circular</option>
+        </select>
+        
+        <div id="inputs" class="hidden">
+            <div id="common_inputs">
+                <label for="length">Length (mm):</label>
+                <input type="number" id="length" name="length" required>
+                
+                <label for="thickness">Thickness (mm):</label>
+                <input type="number" id="thickness" name="thickness" required>
+            </div>
+
+            <div id="IT_inputs" class="hidden">
+                <label for="width">Flange Width (mm):</label>
+                <input type="number" id="width" name="width" required>
+                
+                <label for="height">Height (mm):</label>
+                <input type="number" id="height" name="height" required>
+            </div>
+
+            <div id="circle_inputs" class="hidden">
+                <label for="outerDiameter">Outer Diameter (mm):</label>
+                <input type="number" id="outerDiameter" name="outerDiameter" required>
+            </div>
+
+            <button type="button" id="calculateBtn" class="hidden" onclick="beamCalculator.calculateBeam()">Calculate</button>
+        </div>
+    </form>
+
+    <!-- Image Container -->
+    <div id="imageContainer">
+        <img src="I-Beam.png" id="iBeamImage" class="hidden" alt="I-Beam">
+        <img src="T-Beam.png" id="tBeamImage" class="hidden" alt="T-Beam">
+        <img src="Circle-Beam.png" id="circleBeamImage" class="hidden" alt="Circular Beam">
+    </div>
+
+    <h3>Results:</h3>
+    <p id="result"></p>
+</body>
+</html>
